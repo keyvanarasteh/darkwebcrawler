@@ -1,0 +1,6 @@
+INSERT INTO `dark_links` (`id`, `url`, `crawl_depth`, `crawl_allowed`, `crawl_rejected`, `crawl_period`, `crawl_last`, `checksum`) VALUES
+(1, 'http://4m6omb3gmrmnwzxi.onion/last.php', 0, 'a[href^="show.php?md5="]', NULL, 1, '2018-08-14 00:13:37', '1513462537');
+
+
+INSERT INTO `dark_link_rules` (`id`, `url_pattern`, `crawl_allowed`, `crawl_rejected`) VALUES
+(1, 'show\\.php\\?md5=', 'h3,textarea', NULL);

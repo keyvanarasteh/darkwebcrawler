@@ -1,0 +1,7 @@
+pip install requests
+pip install -U requests[socks]
+pip install mysql-connector
+pip install bs4
+pip install pytz
+pip install PyCRC
+pip install pickle
