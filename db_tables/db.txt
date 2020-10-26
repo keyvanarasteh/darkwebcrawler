@@ -1,0 +1,31 @@
+CREATE TABLE `dark_links` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `url` varchar(150) NOT NULL,
+ `crawl_depth` int(11) NOT NULL DEFAULT '0',
+ `crawl_allowed` text,
+ `crawl_rejected` text,
+ `crawl_period` smallint(6) NOT NULL DEFAULT '60',
+ `crawl_last` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `checksum` varchar(32) DEFAULT NULL,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `dark_links_url` (`url`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8
+
+CREATE TABLE `dark_links_checksum` (
+ `id` int(11) NOT NULL,
+ `url` varchar(500) NOT NULL,
+ `crawl_last` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `checksum` varchar(64) NOT NULL,
+ KEY `dark_links_checksum_id` (`id`),
+ KEY `dark_links_checksum_url` (`url`(255)),
+ CONSTRAINT `dark_links_checksum_ibfk_1` FOREIGN KEY (`id`) REFERENCES `dark_links` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+CREATE TABLE `dark_link_rules` (
+ `id` int(11) NOT NULL,
+ `url_pattern` varchar(150) NOT NULL,
+ `crawl_allowed` text,
+ `crawl_rejected` text,
+ PRIMARY KEY (`id`,`url_pattern`),
+ CONSTRAINT `dark_link_rules_ibfk_1` FOREIGN KEY (`id`) REFERENCES `dark_links` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
