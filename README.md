@@ -1,6 +1,6 @@
 # Python simple DarkWeb Crawler
 
-an old-school python code for crawling dark-web domains
+a multi-thread high performance python code for crawling dark-web domains
 
 Features : 
 
